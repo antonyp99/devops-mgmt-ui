@@ -1,0 +1,5 @@
+[
+  { "id": 1, "tenantId": "TENANT001", "name": "Acme Corporation" },
+  { "id": 2, "tenantId": "TENANT002", "name": "Global Industries" },
+  { "id": 3, "tenantId": "TENANT003", "name": "Tech Solutions" }
+]

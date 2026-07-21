@@ -1,0 +1,122 @@
+/* ── Global MRT (Material React Table) Styles ── */
+
+/* White MRT table surfaces only in light theme. */
+body[data-theme="light"] .MuiTableBody-root .MuiTableRow-root {
+  background-color: #fff !important;
+}
+
+body[data-theme="light"] .MuiTableBody-root .MuiTableCell-root {
+  background-color: #fff !important;
+}
+
+/* Preserve MRT table wrapper backgrounds in light mode only. */
+body[data-theme="light"] .MuiTableContainer-root {
+  background-color: #fff;
+}
+
+/* Dark theme MRT rows/cells should inherit the dark surface. */
+body[data-theme="dark"] .MuiTableBody-root .MuiTableRow-root,
+body[data-theme="dark"] .MuiTableBody-root .MuiTableCell-root {
+  background-color: transparent !important;
+}
+
+body[data-theme="dark"] .MuiTableContainer-root {
+  background-color: transparent;
+}
+
+/* MRT table row hover: theme-aware via CSS custom property set by ThemeContext */
+.MuiTableBody-root .MuiTableRow-root:hover > .MuiTableCell-root {
+  background-color: var(--mrt-row-hover-bg, rgba(92, 107, 192, 0.08)) !important;
+}
+
+/* MRT table header: theme-aware via CSS custom property set by ThemeContext */
+.MuiTableCell-head {
+  background-color: var(--mrt-header-bg, #5f68c6) !important;
+  color: var(--mrt-header-color, #fff) !important;
+}
+
+/* MRT header sort & filter icons inherit white */
+.MuiTableCell-head .MuiTableSortLabel-root,
+.MuiTableCell-head .MuiTableSortLabel-icon,
+.MuiTableCell-head .MuiSvgIcon-root {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.MuiTableCell-head .MuiTableSortLabel-root.Mui-active,
+.MuiTableCell-head .MuiTableSortLabel-root.Mui-active .MuiTableSortLabel-icon {
+  color: #fff !important;
+}
+
+/* ── Pinned Columns Styling (MRT v3) ───────────────────────────────────
+   MRT v3 marks pinned cells with the attribute [data-pinned="true"] and
+   applies inline `position: sticky` plus an `opacity: 0.97`. The bg is
+   rendered through a semi-transparent `::before` pseudo-element. That
+   3% transparency is what causes scrolling data to bleed through the
+   right-pinned Actions column. We force a fully opaque white surface.
+   --------------------------------------------------------------------- */
+
+/* Pinned BODY cells - solid opaque white surface */
+.MuiTableBody-root .MuiTableCell-root[data-pinned="true"] {
+  background-color: #fff !important;
+  opacity: 1 !important;
+  z-index: 3 !important;
+}
+
+/* Kill the translucent ::before overlay that MRT paints on pinned cells
+   (it uses alpha 0.97 which lets scrolling content show through). */
+.MuiTableBody-root .MuiTableCell-root[data-pinned="true"]::before {
+  background-color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* Pinned HEADER cells - keep theme header color, fully opaque */
+.MuiTableHead-root .MuiTableCell-root[data-pinned="true"],
+.MuiTableHead-root .MuiTableCell-head[data-pinned="true"] {
+  background-color: var(--mrt-header-bg, #5f68c6) !important;
+  opacity: 1 !important;
+  z-index: 4 !important;
+}
+
+.MuiTableHead-root .MuiTableCell-root[data-pinned="true"]::before,
+.MuiTableHead-root .MuiTableCell-head[data-pinned="true"]::before {
+  background-color: var(--mrt-header-bg, #5f68c6) !important;
+  opacity: 1 !important;
+}
+
+/* On row hover keep pinned cells opaque with the hover tint.
+   The hover color (--mrt-row-hover-bg) is translucent (rgba alpha ~0.08),
+   so we paint it as a `background-image` LAYER over an opaque white base.
+   This guarantees scrolling rows behind the sticky cell are never visible. */
+.MuiTableBody-root .MuiTableRow-root:hover > .MuiTableCell-root[data-pinned="true"] {
+  background-color: #fff !important;
+  background-image: linear-gradient(
+    var(--mrt-row-hover-bg, rgba(92, 107, 192, 0.08)),
+    var(--mrt-row-hover-bg, rgba(92, 107, 192, 0.08))
+  ) !important;
+  opacity: 1 !important;
+}
+
+.MuiTableBody-root .MuiTableRow-root:hover > .MuiTableCell-root[data-pinned="true"]::before {
+  background-color: #fff !important;
+  background-image: linear-gradient(
+    var(--mrt-row-hover-bg, rgba(92, 107, 192, 0.08)),
+    var(--mrt-row-hover-bg, rgba(92, 107, 192, 0.08))
+  ) !important;
+  opacity: 1 !important;
+}
+
+/* Subtle separator between scrolling area and pinned columns */
+.MuiTableBody-root .MuiTableCell-root[data-pinned="true"]:first-of-type {
+  /* left-pinned last column - separator on right side handled below */
+}
+
+/* Right-pinned: separator on the left edge */
+.MuiTableCell-root[data-pinned="true"][style*="right:"] {
+  box-shadow: -4px 0 4px -4px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Left-pinned: separator on the right edge */
+.MuiTableCell-root[data-pinned="true"][style*="left:"] {
+  box-shadow: 4px 0 4px -4px rgba(0, 0, 0, 0.18) !important;
+}
+
