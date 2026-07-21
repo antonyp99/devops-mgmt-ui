@@ -3,7 +3,7 @@ import React, { createContext, useContext } from 'react';
 /**
  * NavigationContext – Provides section navigation for the single-URL architecture.
  * 
- * All pages share the same '/devops' URL and are rendered based on activeSection state.
+ * All pages share the same '/devops-management-ui' URL and are rendered based on activeSection state.
  * This context allows pages to request navigation to different sections.
  */
 const NavigationContext = createContext();

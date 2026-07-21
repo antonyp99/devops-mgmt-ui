@@ -41,7 +41,7 @@ const LoginPage = () => {
 
   React.useEffect(() => {
     if (authenticated) {
-      navigate('/devops');
+      navigate('/devops-management-ui');
     }
   }, [authenticated, navigate]);
 
@@ -69,7 +69,7 @@ const LoginPage = () => {
       const result = await loginWithCredentials(formData.username, formData.password);
 
       if (result.success) {
-        navigate('/devops');
+        navigate('/devops-management-ui');
       } else {
         setError(result.error || 'Login failed. Please try again.');
       }

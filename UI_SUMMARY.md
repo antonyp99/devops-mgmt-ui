@@ -1,8 +1,8 @@
-# Enterprise Product Management Platform – UI Documentation
+# Enterprise Product Management Platform ï¿½ UI Documentation
 
 ## Overview
 
-This repository contains a React-based admin UI built with Vite and Material UI. The application provides an authenticated DevOps/product management portal with a single main shell under `/devops` and a separate login route at `/devops/login`.
+This repository contains a React-based admin UI built with Vite and Material UI. The application provides an authenticated DevOps/product management portal with a single main shell under `/devops` and a separate login route at `/devops-management-ui/login`.
 
 The UI is designed for enterprise workflows: product/customer management, requests and approvals, security scans, releases and deployments, analytics, and a profile/configuration editor.
 
@@ -21,7 +21,7 @@ The UI is designed for enterprise workflows: product/customer management, reques
 
 * `src/AppRoutes.jsx`
   * Defines public and authenticated routes.
-  * Public route: `/devops/login`.
+  * Public route: `/devops-management-ui/login`.
   * Authenticated shell route: `/devops`.
   * Redirects `/` and unknown routes to login or app shell.
 
@@ -123,7 +123,7 @@ Configures Axios for backend requests.
 * Combines backend host and API prefix.
 * Uses `Content-Type: application/json`.
 * Sends credentials for cookie auth.
-* Redirects to `/devops/login` on 401 responses.
+* Redirects to `/devops-management-ui/login` on 401 responses.
 
 ---
 
@@ -353,7 +353,7 @@ The profile editor is composed of several modular panels:
 * `panels/IntegrationPanel.jsx`
 * `panels/MicroserviceConfigPanel.jsx`
 
-These panels define the profile editor’s configuration workflow and YAML output.
+These panels define the profile editorï¿½s configuration workflow and YAML output.
 
 ---
 
@@ -399,15 +399,15 @@ Architecture is centered on:
 
 # Project Structure
 
-* `src/App.jsx` — app composition and provider nesting.
-* `src/AppRoutes.jsx` — route configuration.
-* `src/components/Layout/` — main shell and navigation.
-* `src/components/ui/` — shared layout and personalization UI.
-* `src/contexts/` — theme and alert providers.
-* `src/services/` — authentication, API, and tenant utilities.
-* `src/pages/` — main application screens.
-* `src/config/` — backend configuration.
-* `src/components/profile-editor/` — profile editor workspace.
+* `src/App.jsx` ï¿½ app composition and provider nesting.
+* `src/AppRoutes.jsx` ï¿½ route configuration.
+* `src/components/Layout/` ï¿½ main shell and navigation.
+* `src/components/ui/` ï¿½ shared layout and personalization UI.
+* `src/contexts/` ï¿½ theme and alert providers.
+* `src/services/` ï¿½ authentication, API, and tenant utilities.
+* `src/pages/` ï¿½ main application screens.
+* `src/config/` ï¿½ backend configuration.
+* `src/components/profile-editor/` ï¿½ profile editor workspace.
 
 ---
 

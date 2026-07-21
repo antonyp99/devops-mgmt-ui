@@ -6,18 +6,18 @@ import LoginPage from './pages/LoginPage';
 import { useAuth } from './services/AuthProvider';
 
 /**
- * PrivateRoute – Redirects to /devops/login when the user is not authenticated.
+ * PrivateRoute – Redirects to /devops-management-ui/login when the user is not authenticated.
  */
 const PrivateRoute = ({ children }) => {
   const { authenticated } = useAuth();
-  return authenticated ? children : <Navigate to="/devops/login" replace />;
+  return authenticated ? children : <Navigate to="/devops-management-ui/login" replace />;
 };
 
 /**
  * AppRoutes – Single-URL architecture.
  *
  * Only two top-level URLs exist:
- *   /devops/login  – public authentication page
+ *   /devops-management-ui/login  – public authentication page
  *   /devops – the entire authenticated application (single URL)
  *
  * All section switching (Dashboard, Requests, Approvals, etc.) is handled
@@ -34,11 +34,11 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Public route – authentication only */}
-      <Route path="/devops/login" element={<LoginPage />} />
+      <Route path="/devops-management-ui/login" element={<LoginPage />} />
 
       {/* Single authenticated route – all sections rendered inside Layout via state */}
       <Route
-        path="/devops"
+        path="/devops-management-ui"
         element={
           <PrivateRoute>
             <Layout />
@@ -47,12 +47,12 @@ const AppRoutes = () => {
       />
 
       {/* Root redirect */}
-      <Route path="/" element={<Navigate to={authenticated ? '/devops' : '/devops/login'} replace />} />
+      <Route path="/" element={<Navigate to={authenticated ? '/devops-management-ui' : '/devops-management-ui/login'} replace />} />
 
       {/* Fallback – any unknown path */}
       <Route
         path="*"
-        element={<Navigate to={authenticated ? '/devops' : '/devops/login'} replace />}
+        element={<Navigate to={authenticated ? '/devops-management-ui' : '/devops-management-ui/login'} replace />}
       />
     </Routes>
   );
