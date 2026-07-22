@@ -27,6 +27,6 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./devops-management-ui
+          path: ./dist
 
       - uses: actions/deploy-pages@v4
