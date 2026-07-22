@@ -9,6 +9,6 @@ export default defineConfig(({ mode }) => ({
     open: true,
   },
   build: {
-    outDir: 'devops',
+    outDir: 'devops-management-ui',
   },
 }));
