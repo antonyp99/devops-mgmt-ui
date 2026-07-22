@@ -6,9 +6,15 @@
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
-  "start_url": ".",
+  "start_url": "/devops-mgmt-ui/",
+  "scope": "/devops-mgmt-ui/",
   "display": "standalone",
   "theme_color": "#7c4dff",
   "background_color": "#ffffff"

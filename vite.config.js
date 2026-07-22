@@ -3,12 +3,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: mode === 'production' ? '/devops-management-ui/' : '/',
+  base: mode === 'production' ? '/devops-mgmt-ui/' : '/',
   server: {
     port: 3001,
     open: true,
   },
   build: {
-    outDir: 'devops-management-ui',
+    outDir: 'dist',
+    emptyOutDir: true,
   },
 }));

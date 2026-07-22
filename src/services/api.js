@@ -18,7 +18,7 @@ class ApiService {
         const isLoginRequest = error.config?.url?.includes('/auth/login');
         if (error.response?.status === 401 && !isLoginRequest) {
           // Session expired or not authenticated — redirect to login
-          window.location.href = '/devops-management-ui/login';
+          window.location.href = `${import.meta.env.BASE_URL}#/login`;
         }
         return Promise.reject(error);
       }
